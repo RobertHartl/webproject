@@ -9,10 +9,23 @@
 <body>
     <header class="app-header">
         <h1>Karteikarten-Lernsystem</h1>
+        <nav class="main-nav" aria-label="Hauptnavigation">
+            <button type="button" class="nav-button" data-view="overview" aria-pressed="true">Karten verwalten</button>
+            <button type="button" class="nav-button" data-view="session" aria-pressed="false">Lernen</button>
+            <button type="button" class="nav-button" data-view="stats" aria-pressed="false">Statistik</button>
+        </nav>
     </header>
 
     <main>
-        <!-- Hier kommen später die drei Ansichten rein -->
+        <section id="view-overview" class="view" aria-labelledby="overview-heading">
+            <h2 id="overview-heading">Karten verwalten</h2>
+        </section>
+        <section id="view-session" class="view" hidden aria-labelledby="session-heading">
+            <h2 id="session-heading">Lernsession</h2>
+        </section>
+        <section id="view-stats" class="view" hidden aria-labelledby="stats-heading">
+            <h2 id="stats-heading">Statistik</h2>
+        </section>
     </main>
 
     <footer class="app-footer">
