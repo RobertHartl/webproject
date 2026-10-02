@@ -1,1 +1,19 @@
 /*  Gruppe:  WI_A_Gruppe_5   */
+:root {
+    --color-bg: #f7f7fb;
+    --color-surface: #ffffff;
+    --color-text: #1f2433;
+    --color-text-muted: #5b6270;
+    --color-primary: #3a5ba0;
+    --color-primary-dark: #2c477e;
+    --color-success: #2f855a;
+    --color-danger: #c0392b;
+    --color-border: #d9dce3;
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2.5rem;
+    --radius: 0.5rem;
+    --font-base: system-ui, sans-serif;
+}
