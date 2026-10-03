@@ -18,6 +18,16 @@
     --font-base: system-ui, sans-serif;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #1a1d27;
+        --color-surface: #242836;
+        --color-text: #e8e9ee;
+        --color-text-muted: #a6abbd;
+        --color-border: #3a3f52;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
