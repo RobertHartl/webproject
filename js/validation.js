@@ -1,3 +1,4 @@
+// Gruppe:  WI_A_Gruppe_5
 function validateCardInput(question, answer) {
   const errors = [];
   if (!question || question.trim().length === 0) {
