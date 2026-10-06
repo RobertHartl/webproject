@@ -6,3 +6,19 @@ const MAX_BOX = 5;
 function isCardDue(card, sessionsCount) {
     return card.dueAtSession <= sessionsCount;
 }
+
+function promoteCard(card, sessionsCount) {
+    card.box = Math.min(card.box + 1, MAX_BOX);
+    card.dueAtSession = sessionsCount + BOX_Intervals[card.box];
+}
+
+function resetCard(card, sessionsCount) {
+    card.box = 1;
+    card.dueAtSession = sessionsCount;
+}
+
+function getDueCards(cards, sessionsCount) {
+    return cards.filter(function (card) {
+        return isCardDue(card, sessionsCount);
+    });
+}
