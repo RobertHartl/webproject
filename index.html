@@ -22,6 +22,20 @@
     <main>
         <section id="view-overview" class="view" aria-labelledby="overview-heading">
             <h2 id="overview-heading">Karten verwalten</h2>
+            <form id="card-form" class="card-form">
+                <div class="form-field">
+                    <label for="card-category">Kategorie</label>
+                    <input type="text" id="card-category" name="category" placeholder="z. B. Wirtschaftsinformatik">
+                </div>
+                <div class="form-field">
+                    <label for="card-question">Frage</label>
+                    <input type="text" id="card-question" name="question">
+                </div>
+                <div class="form-field">
+                    <label for="card-answer">Antwort</label>
+                    <input type="text" id="card-answer" name="answer">
+                </div>
+            </form>
         </section>
         <section id="view-session" class="view" hidden aria-labelledby="session-heading">
             <h2 id="session-heading">Lernsession</h2>
