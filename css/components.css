@@ -1,1 +1,23 @@
 /*  Gruppe:  WI_A_Gruppe_5   */
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.nav-button {
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.nav-button[aria-pressed="true"] {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
