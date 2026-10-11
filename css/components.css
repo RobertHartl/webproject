@@ -162,3 +162,24 @@
   background: #eef2fb;
   color: #1f2433;
 }
+
+.rating-buttons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+.button-correct {
+  background: var(--color-success);
+  color: #fff;
+}
+
+.button-wrong {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
