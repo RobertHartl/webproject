@@ -51,6 +51,16 @@
             </div>
             <div id="session-card-container" class="session-card-container" hidden>
                 <p id="session-progress" class="session-progress"></p>
+                <button type="button" id="flip-trigger" class="flip-trigger" aria-pressed="false">
+                    <span class="card-inner">
+                        <span class="card-front"><span id="session-question"></span></span>
+                        <span class="card-back"><span id="session-answer"></span></span>
+                    </span>
+                </button>
+                <div class="rating-buttons">
+                    <button type="button" id="rate-wrong" class="button button-wrong">Nicht gewusst</button>
+                    <button type="button" id="rate-correct" class="button button-correct">Gewusst</button>
+                </div>
             </div>
         </section>
         <section id="view-stats" class="view" hidden aria-labelledby="stats-heading">
