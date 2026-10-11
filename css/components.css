@@ -152,6 +152,9 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
+  backface-visibility: hidden;
+  overflow-wrap: anywhere;
+  overflow-y: auto;
 }
 
 .card-back {
