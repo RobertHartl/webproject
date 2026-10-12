@@ -2,6 +2,32 @@
 
 let appState = createDefaultState();
 
+function switchView(viewName) {
+  const views = document.querySelectorAll(".view");
+  views.forEach(function (view) {
+    view.hidden = view.id !== "view-" + viewName;
+  });
+
+  const navButtons = document.querySelectorAll(".nav-button");
+  navButtons.forEach(function (button) {
+    button.setAttribute("aria-pressed", String(button.dataset.view === viewName));
+  });
+
+  if (viewName === "overview") {
+    renderCardOverview(appState);
+  } else if (viewName === "session") {
+    renderSessionView(appState);
+  }
+}
+
+function initNavigation() {
+  document.querySelectorAll(".nav-button").forEach(function (button) {
+    button.addEventListener("click", function () {
+      switchView(button.dataset.view);
+    });
+  });
+}
+
 function initCardForm() {
   const form = document.getElementById("card-form");
   const errorOutput = document.getElementById("form-error");
@@ -28,8 +54,23 @@ function initCardForm() {
   });
 }
 
+function initSessionControls() {
+    document.getElementById("session-start-btn").addEventListener("click", function () {
+    startSession(appState);
+  });
+  document.getElementById("flip-trigger").addEventListener("click", flipCurrentCard);
+  document.getElementById("rate-correct").addEventListener("click", function () {
+    rateCurrentCard(appState, true);
+  });
+  document.getElementById("rate-wrong").addEventListener("click", function () {
+    rateCurrentCard(appState, false);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   appState = loadState();
+  initNavigation();
   initCardForm();
+  initSessionControls();
   renderCardOverview(appState);
 });
