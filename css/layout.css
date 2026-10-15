@@ -14,3 +14,30 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.stat-tile {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.stat-tile .stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.stat-tile .stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
