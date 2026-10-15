@@ -39,6 +39,8 @@ function renderCategoryFilter(state) {
     if (!select) return;
 
     const categories = getCategories(state.cards);
+    const previousValue = select.value || "all"; // FIX
+
     select.innerHTML = "";
 
     const allOption = document.createElement("option");
@@ -52,6 +54,8 @@ function renderCategoryFilter(state) {
         option.textContent = category;
         select.appendChild(option);
     });
+
+    select.value = categories.includes(previousValue) ? previousValue : "all"; // FIX
 }
 
 function renderStatsDashboard(state) {
