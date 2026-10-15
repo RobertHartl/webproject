@@ -17,7 +17,16 @@ function switchView(viewName) {
     renderCardOverview(appState);
   } else if (viewName === "session") {
     renderSessionView(appState);
+  } else if (viewName === "stats") {
+    renderCategoryFilter(appState);
+    renderStatsDashboard(appState);
   }
+}
+
+function initStatsControls() {
+  document.getElementById("category-filter").addEventListener("change", function () {
+    renderStatsDashboard(appState);
+  });
 }
 
 function initNavigation() {
@@ -55,9 +64,9 @@ function initCardForm() {
 }
 
 function initSessionControls() {
-    document.getElementById("session-start-button").addEventListener("click", function () {
-  startSession(appState);
-});
+  document.getElementById("session-start-button").addEventListener("click", function () {
+    startSession(appState);
+  });
   document.getElementById("flip-trigger").addEventListener("click", flipCurrentCard);
   document.getElementById("rate-correct").addEventListener("click", function () {
     rateCurrentCard(appState, true);
@@ -72,5 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
   initNavigation();
   initCardForm();
   initSessionControls();
+  initStatsControls();
   renderCardOverview(appState);
 });
