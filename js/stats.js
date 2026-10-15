@@ -9,6 +9,9 @@ function calculateBoxCounts(cards) {
 }
 
 function calculateSuccessRate(stats) {
+    if (!stats || stats.totalReviews === 0) {
+        return 0;
+    }
     return Math.round((stats.correctReviews / stats.totalReviews) * 100);
 }
 
