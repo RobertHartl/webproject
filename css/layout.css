@@ -41,3 +41,25 @@
   font-size: 0.85rem;
   color: var(--color-text-muted);
 }
+
+@media (max-width: 480px) {
+  main {
+    padding: var(--space-md);
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rating-buttons {
+    flex-direction: column;
+  }
+
+  .card-form {
+    max-width: 100%;
+  }
+
+  .main-nav {
+    gap: var(--space-xs);
+  }
+}
