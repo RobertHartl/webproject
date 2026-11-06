@@ -1,24 +1,24 @@
-// Gruppe:  WI_A_Gruppe_5
+// Gruppe: WI_A_Gruppe_5
 
-const BOX_Intervals = { 1: 0, 2: 1, 3: 3, 4: 6, 5: 10 };
+const BOX_INTERVALS = { 1: 0, 2: 1, 3: 3, 4: 6, 5: 10 };
 const MAX_BOX = 5;
 
-function isCardDue(card, sessionsCount) {
-  return card.dueAtSession <= sessionsCount;
+function isCardDue(card, sessionCount) {
+  return card.dueAtSession <= sessionCount;
 }
 
-function promoteCard(card, sessionsCount) {
+function promoteCard(card, sessionCount) {
   card.box = Math.min(card.box + 1, MAX_BOX);
-  card.dueAtSession = sessionsCount + BOX_Intervals[card.box];
+  card.dueAtSession = sessionCount + BOX_INTERVALS[card.box];
 }
 
-function resetCard(card, sessionsCount) {
+function resetCard(card, sessionCount) {
   card.box = 1;
-  card.dueAtSession = sessionsCount;
+  card.dueAtSession = sessionCount;
 }
 
-function getDueCards(cards, sessionsCount) {
+function getDueCards(cards, sessionCount) {
   return cards.filter(function (card) {
-    return isCardDue(card, sessionsCount);
+    return isCardDue(card, sessionCount);
   });
 }

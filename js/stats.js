@@ -1,4 +1,4 @@
-// Gruppe:  WI_A_Gruppe_5
+// Gruppe: WI_A_Gruppe_5
 
 function calculateBoxCounts(cards) {
   const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
@@ -39,7 +39,7 @@ function renderCategoryFilter(state) {
   if (!select) return;
 
   const categories = getCategories(state.cards);
-  const previousValue = select.value || "all"; // FIX
+  const previousValue = select.value || "all";
 
   select.innerHTML = "";
 
@@ -55,7 +55,23 @@ function renderCategoryFilter(state) {
     select.appendChild(option);
   });
 
-  select.value = categories.includes(previousValue) ? previousValue : "all"; // FIX
+  select.value = categories.includes(previousValue) ? previousValue : "all";
+}
+
+function createStatTile(labelText, valueText) {
+  const tile = document.createElement("div");
+  tile.className = "stat-tile";
+
+  const value = document.createElement("span");
+  value.className = "stat-value";
+  value.textContent = String(valueText);
+
+  const label = document.createElement("span");
+  label.className = "stat-label";
+  label.textContent = labelText;
+
+  tile.append(value, label);
+  return tile;
 }
 
 function renderStatsDashboard(state) {
@@ -84,18 +100,6 @@ function renderStatsDashboard(state) {
   ];
 
   tiles.forEach(function (tile) {
-    const el = document.createElement("div");
-    el.className = "stat-tile";
-
-    const value = document.createElement("span");
-    value.className = "stat-value";
-    value.textContent = String(tile.value);
-
-    const label = document.createElement("span");
-    label.className = "stat-label";
-    label.textContent = tile.label;
-
-    el.append(value, label);
-    dashboard.appendChild(el);
+    dashboard.appendChild(createStatTile(tile.label, tile.value));
   });
 }
