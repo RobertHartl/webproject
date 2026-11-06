@@ -1,4 +1,4 @@
-// Gruppenname: WI_X_Gruppe_N
+// Gruppenname: WI_A_Gruppe_5
 
 function createCardElement(card, onDelete) {
   const item = document.createElement("li");
