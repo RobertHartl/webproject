@@ -8,7 +8,7 @@
 
 .nav-button {
   padding: var(--space-sm) var(--space-md);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius);
   background: var(--color-surface);
   color: var(--color-text);
@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 
-.nav-button[aria-pressed="true"] {
+.nav-button[aria-current="page"] {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: #fff;
@@ -46,9 +46,11 @@
 }
 
 .form-field input,
-.form-field select {
+.form-field select,
+.form-field textarea {
   padding: var(--space-sm);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
+  font-family: inherit;
   border-radius: var(--radius);
   background: var(--color-bg);
   color: var(--color-text);
@@ -57,7 +59,7 @@
 
 .form-error {
   margin: 0;
-  color: var(--color-danger);
+  color: var(--color-danger-text);
   font-size: 0.9rem;
 }
 
@@ -81,10 +83,10 @@
 .button-delete {
   align-self: flex-start;
   padding: var(--space-xs) var(--space-sm);
-  border: 1px solid var(--color-danger);
+  border: 1px solid var(--color-danger-text);
   border-radius: var(--radius);
   background: transparent;
-  color: var(--color-danger);
+  color: var(--color-danger-text);
   font-size: 0.85rem;
   cursor: pointer;
 }
@@ -159,8 +161,8 @@
 
 .card-back {
   transform: rotateY(180deg);
-  background: #eef2fb;
-  color: #1f2433;
+  background: var(--color-card-back);
+  color: var(--color-text);
 }
 
 .rating-buttons {
@@ -197,4 +199,40 @@ button:disabled {
   text-align: center;
   color: var(--color-text-muted);
   margin-bottom: var(--space-sm);
+}
+.button,
+.nav-button,
+.button-delete {
+  min-height: 2.75rem;
+}
+
+.nav-button:hover {
+  background: var(--color-bg);
+}
+
+.nav-button[aria-current="page"]:hover {
+  background: var(--color-primary-dark);
+}
+
+.button-delete:hover {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+  color: #fff;
+}
+
+.session-hint {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary-text);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-inner {
+    transition: none;
+  }
 }
