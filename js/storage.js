@@ -6,11 +6,26 @@ function createDefaultState() {
   return {
     cards: [],
     sessionCount: 0,
+    session: null,
     stats: {
       totalReviews: 0,
       correctReviews: 0,
     },
   };
+}
+
+function isValidCard(card) {
+  return (
+    Boolean(card) &&
+    typeof card.id === "string" &&
+    typeof card.category === "string" &&
+    typeof card.question === "string" &&
+    typeof card.answer === "string" &&
+    Number.isInteger(card.box) &&
+    card.box >= 1 &&
+    card.box <= MAX_BOX &&
+    typeof card.dueAtSession === "number"
+  );
 }
 
 function loadState() {
@@ -23,6 +38,7 @@ function loadState() {
     if (!parsed || !Array.isArray(parsed.cards)) {
       return createDefaultState();
     }
+    parsed.cards = parsed.cards.filter(isValidCard);
     if (typeof parsed.sessionCount !== "number") {
       parsed.sessionCount = 0;
     }

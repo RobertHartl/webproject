@@ -1,4 +1,4 @@
-// Gruppenname: WI_A_Gruppe_5
+// Gruppe: WI_A_Gruppe_5
 
 function createCardElement(card, onDelete) {
   const item = document.createElement("li");
@@ -50,10 +50,22 @@ function renderCardOverview(state) {
   });
 }
 
+function generateCardId() {
+  return "card-" + Date.now() + "-" + Math.floor(Math.random() * 10000);
+}
+
+function normalizeCategory(cards, category) {
+  const trimmedCategory = category.trim();
+  const existingCard = cards.find(function (card) {
+    return card.category.toLowerCase() === trimmedCategory.toLowerCase();
+  });
+  return existingCard ? existingCard.category : trimmedCategory;
+}
+
 function addCard(state, category, question, answer) {
   const newCard = {
     id: generateCardId(),
-    category: category.trim(),
+    category: normalizeCategory(state.cards, category),
     question: question.trim(),
     answer: answer.trim(),
     box: 1,
