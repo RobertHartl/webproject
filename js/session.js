@@ -14,9 +14,11 @@ function startSession(state) {
 }
 
 function pruneSessionCards(state) {
-  const existingIds = new Set(state.cards.map(function (card) {
-    return card.id;
-  }));
+  const existingIds = new Set(
+    state.cards.map(function (card) {
+      return card.id;
+    }),
+  );
   const remainingBefore = currentSessionCards
     .slice(0, currentCardIndex)
     .filter(function (card) {
@@ -80,34 +82,35 @@ function renderSessionView(state) {
   const noCards = document.getElementById("session-no-cards");
   const emptyBox = document.getElementById("session-empty");
   const container = document.getElementById("session-card-container");
-  
+
   pruneSessionCards(state);
-  
+
   if (state.cards.length === 0) {
     noCards.hidden = false;
     emptyBox.hidden = true;
     container.hidden = true;
     return;
   }
-  
+
   const card = getCurrentSessionCard();
   if (!card) {
     noCards.hidden = true;
     emptyBox.hidden = false;
     container.hidden = true;
-    document.getElementById("session-empty-text").textContent = getEmptyMessage();
+    document.getElementById("session-empty-text").textContent =
+      getEmptyMessage();
     return;
   }
-  
+
   noCards.hidden = true;
   emptyBox.hidden = true;
   container.hidden = false;
-  
+
   document.getElementById("session-question").textContent = card.question;
   document.getElementById("session-answer").textContent = card.answer;
   document.getElementById("session-progress").textContent =
     "Karte " + (currentCardIndex + 1) + " von " + currentSessionCards.length;
-    
+
   document.getElementById("flip-trigger").setAttribute("aria-pressed", "false");
   setRatingButtonsEnabled(false);
 }

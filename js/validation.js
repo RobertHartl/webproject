@@ -7,7 +7,7 @@ function validateCardInput(question, answer) {
   if (!answer || answer.trim().length === 0) {
     errors.push("Bitte eine Antwort eingeben.");
   }
- if (question && question.trim().length > 200) {
+  if (question && question.trim().length > 200) {
     errors.push("Die Frage ist zu lang (maximal 200 Zeichen).");
   }
   return errors;

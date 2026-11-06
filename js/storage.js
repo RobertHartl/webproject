@@ -8,8 +8,8 @@ function createDefaultState() {
     sessionCount: 0,
     stats: {
       totalReviews: 0,
-      correctReviews: 0
-    }
+      correctReviews: 0,
+    },
   };
 }
 
@@ -26,13 +26,19 @@ function loadState() {
     if (typeof parsed.sessionCount !== "number") {
       parsed.sessionCount = 0;
     }
-    if (!parsed.stats || typeof parsed.stats.totalReviews !== "number" ||
-        typeof parsed.stats.correctReviews !== "number") {
+    if (
+      !parsed.stats ||
+      typeof parsed.stats.totalReviews !== "number" ||
+      typeof parsed.stats.correctReviews !== "number"
+    ) {
       parsed.stats = { totalReviews: 0, correctReviews: 0 };
     }
     return parsed;
   } catch (error) {
-    console.warn("Gespeicherte Daten waren beschädigt, starte mit leerem Zustand.", error);
+    console.warn(
+      "Gespeicherte Daten waren beschädigt, starte mit leerem Zustand.",
+      error,
+    );
     return createDefaultState();
   }
 }

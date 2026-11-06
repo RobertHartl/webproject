@@ -1,80 +1,150 @@
 <!-- Gruppenname: WI_A_Gruppe_5 -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Karteikarten-Lernsystem</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/layout.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
     <header class="app-header">
-        <h1>Karteikarten-Lernsystem</h1>
-        <nav class="main-nav" aria-label="Hauptnavigation">
-            <button type="button" class="nav-button" data-view="overview" aria-pressed="true">Karten verwalten</button>
-            <button type="button" class="nav-button" data-view="session" aria-pressed="false">Lernen</button>
-            <button type="button" class="nav-button" data-view="stats" aria-pressed="false">Statistik</button>
-        </nav>
+      <h1>Karteikarten-Lernsystem</h1>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <button
+          type="button"
+          class="nav-button"
+          data-view="overview"
+          aria-pressed="true"
+        >
+          Karten verwalten
+        </button>
+        <button
+          type="button"
+          class="nav-button"
+          data-view="session"
+          aria-pressed="false"
+        >
+          Lernen
+        </button>
+        <button
+          type="button"
+          class="nav-button"
+          data-view="stats"
+          aria-pressed="false"
+        >
+          Statistik
+        </button>
+      </nav>
     </header>
 
     <main>
-        <section id="view-overview" class="view" aria-labelledby="overview-heading">
-            <h2 id="overview-heading">Karten verwalten</h2>
-            <form id="card-form" class="card-form">
-                <div class="form-field">
-                    <label for="card-category">Kategorie</label>
-                    <input type="text" id="card-category" name="category" placeholder="z. B. Wirtschaftsinformatik">
-                </div>
-                <div class="form-field">
-                    <label for="card-question">Frage</label>
-                    <input type="text" id="card-question" name="question">
-                </div>
-                <div class="form-field">
-                    <label for="card-answer">Antwort</label>
-                    <input type="text" id="card-answer" name="answer">
-                </div>
-                <p id="form-error" class="form-error" hidden></p>
-                <button type="submit" class="button button-primary">Karte hinzufügen</button>
-            </form>
-            <ul id="card-list" class="card-grid"></ul>
-        </section>
-        <section id="view-session" class="view" hidden aria-labelledby="session-heading">
-            <h2 id="session-heading">Lernsession</h2>
-            <div id="session-empty" class="session-empty">
-                <p id="session-empty-text">Starte eine Session, um fällige Karten zu lernen.</p>
-                <button type="button" id="session-start-button" class="button button-primary">Session starten</button>
-            </div>
-            <div id="session-no-cards" class="session-empty" hidden>
-                <p>Es wurden noch keine Karten angelegt. Wechsle zu „Karten verwalten“, um loszulegen.</p>
-            </div>
-            <div id="session-card-container" class="session-card-container" hidden>
-                <p id="session-progress" class="session-progress"></p>
-                <button type="button" id="flip-trigger" class="flip-trigger" aria-pressed="false">
-                    <span class="card-inner">
-                        <span class="card-front"><span id="session-question"></span></span>
-                        <span class="card-back"><span id="session-answer"></span></span>
-                    </span>
-                </button>
-                <div class="rating-buttons">
-                    <button type="button" id="rate-wrong" class="button button-wrong">Nicht gewusst</button>
-                    <button type="button" id="rate-correct" class="button button-correct">Gewusst</button>
-                </div>
-            </div>
-        </section>
-        <section id="view-stats" class="view" hidden aria-labelledby="stats-heading">
-            <h2 id="stats-heading">Statistik</h2>
-            <div class="form-field">
-                <label for="category-filter">Kategorie filtern</label>
-                <select id="category-filter"></select>
-            </div>
-            <div id="stats-dashboard" class="stats-grid"></div>
-        </section>
+      <section
+        id="view-overview"
+        class="view"
+        aria-labelledby="overview-heading"
+      >
+        <h2 id="overview-heading">Karten verwalten</h2>
+        <form id="card-form" class="card-form">
+          <div class="form-field">
+            <label for="card-category">Kategorie</label>
+            <input
+              type="text"
+              id="card-category"
+              name="category"
+              placeholder="z. B. Wirtschaftsinformatik"
+            />
+          </div>
+          <div class="form-field">
+            <label for="card-question">Frage</label>
+            <input type="text" id="card-question" name="question" />
+          </div>
+          <div class="form-field">
+            <label for="card-answer">Antwort</label>
+            <input type="text" id="card-answer" name="answer" />
+          </div>
+          <p id="form-error" class="form-error" hidden></p>
+          <button type="submit" class="button button-primary">
+            Karte hinzufügen
+          </button>
+        </form>
+        <ul id="card-list" class="card-grid"></ul>
+      </section>
+      <section
+        id="view-session"
+        class="view"
+        hidden
+        aria-labelledby="session-heading"
+      >
+        <h2 id="session-heading">Lernsession</h2>
+        <div id="session-empty" class="session-empty">
+          <p id="session-empty-text">
+            Starte eine Session, um fällige Karten zu lernen.
+          </p>
+          <button
+            type="button"
+            id="session-start-button"
+            class="button button-primary"
+          >
+            Session starten
+          </button>
+        </div>
+        <div id="session-no-cards" class="session-empty" hidden>
+          <p>
+            Es wurden noch keine Karten angelegt. Wechsle zu „Karten verwalten“,
+            um loszulegen.
+          </p>
+        </div>
+        <div id="session-card-container" class="session-card-container" hidden>
+          <p id="session-progress" class="session-progress"></p>
+          <button
+            type="button"
+            id="flip-trigger"
+            class="flip-trigger"
+            aria-pressed="false"
+          >
+            <span class="card-inner">
+              <span class="card-front"
+                ><span id="session-question"></span
+              ></span>
+              <span class="card-back"><span id="session-answer"></span></span>
+            </span>
+          </button>
+          <div class="rating-buttons">
+            <button type="button" id="rate-wrong" class="button button-wrong">
+              Nicht gewusst
+            </button>
+            <button
+              type="button"
+              id="rate-correct"
+              class="button button-correct"
+            >
+              Gewusst
+            </button>
+          </div>
+        </div>
+      </section>
+      <section
+        id="view-stats"
+        class="view"
+        hidden
+        aria-labelledby="stats-heading"
+      >
+        <h2 id="stats-heading">Statistik</h2>
+        <div class="form-field">
+          <label for="category-filter">Kategorie filtern</label>
+          <select id="category-filter"></select>
+        </div>
+        <div id="stats-dashboard" class="stats-grid"></div>
+      </section>
     </main>
 
     <footer class="app-footer">
-        <p>Karteikarten-Lernsystem – Portfolioprüfung Einführung Webtechnologien</p>
+      <p>
+        Karteikarten-Lernsystem – Portfolioprüfung Einführung Webtechnologien
+      </p>
     </footer>
     <script src="js/storage.js"></script>
     <script src="js/validation.js"></script>
@@ -83,5 +153,5 @@
     <script src="js/session.js"></script>
     <script src="js/stats.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>

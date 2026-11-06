@@ -57,7 +57,7 @@ function addCard(state, category, question, answer) {
     question: question.trim(),
     answer: answer.trim(),
     box: 1,
-    dueAtSession: state.sessionCount
+    dueAtSession: state.sessionCount,
   };
 
   state.cards.push(newCard);

@@ -1,117 +1,117 @@
 /*  Gruppe:  WI_A_Gruppe_5   */
 .main-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-    margin-top: var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
 }
 
 .nav-button {
-    padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: var(--color-surface);
-    color: var(--color-text);
-    font-size: 1rem;
-    cursor: pointer;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .nav-button[aria-pressed="true"] {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: #fff;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
 }
 
 .card-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    max-width: 480px;
-    margin-bottom: var(--space-lg);
-    padding: var(--space-lg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 480px;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
 }
 
 .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .form-field label {
-    font-size: 0.9rem;
-    font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .form-field input,
 .form-field select {
-    padding: var(--space-sm);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: var(--color-bg);
-    color: var(--color-text);
-    font-size: 1rem;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 1rem;
 }
 
 .form-error {
-    margin: 0;
-    color: var(--color-danger);
-    font-size: 0.9rem;
+  margin: 0;
+  color: var(--color-danger);
+  font-size: 0.9rem;
 }
 
 .button {
-    padding: var(--space-sm) var(--space-lg);
-    border: none;
-    border-radius: var(--radius);
-    font-size: 1rem;
-    cursor: pointer;
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .button-primary {
-    background: var(--color-primary);
-    color: #fff;
+  background: var(--color-primary);
+  color: #fff;
 }
 
 .button-primary:hover {
-    background: var(--color-primary-dark);
+  background: var(--color-primary-dark);
 }
 
 .button-delete {
-    align-self: flex-start;
-    padding: var(--space-xs) var(--space-sm);
-    border: 1px solid var(--color-danger);
-    border-radius: var(--radius);
-    background: transparent;
-    color: var(--color-danger);
-    font-size: 0.85rem;
-    cursor: pointer;
+  align-self: flex-start;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-danger);
+  font-size: 0.85rem;
+  cursor: pointer;
 }
 
 .card-tile {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-    padding: var(--space-md);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
 }
 
 .card-tile-question {
-    font-weight: 600;
-    overflow-wrap: anywhere;
+  font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 .card-tile-meta {
-    color: var(--color-text-muted);
-    font-size: 0.85rem;
-    overflow-wrap: anywhere;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
 }
 
 .card-list-empty {
-    color: var(--color-text-muted);
+  color: var(--color-text-muted);
 }
 
 .flip-trigger {
