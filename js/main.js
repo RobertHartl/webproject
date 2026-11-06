@@ -10,10 +10,11 @@ function switchView(viewName) {
 
   const navButtons = document.querySelectorAll(".nav-button");
   navButtons.forEach(function (button) {
-    button.setAttribute(
-      "aria-pressed",
-      String(button.dataset.view === viewName),
-    );
+    if (button.dataset.view === viewName) {
+      button.setAttribute("aria-current", "page");
+    } else {
+      button.removeAttribute("aria-current");
+    }
   });
 
   if (viewName === "overview") {
@@ -53,7 +54,10 @@ function initCardForm() {
     const question = document.getElementById("card-question").value;
     const answer = document.getElementById("card-answer").value;
 
-    const errors = validateCardInput(question, answer);
+    const errors = validateCardInput(
+      { category: category, question: question, answer: answer },
+      appState.cards,
+    );
 
     if (errors.length > 0) {
       errorOutput.textContent = errors.join(" ");
@@ -89,6 +93,7 @@ function initSessionControls() {
 
 document.addEventListener("DOMContentLoaded", function () {
   appState = loadState();
+  restoreSession(appState);
   initNavigation();
   initCardForm();
   initSessionControls();

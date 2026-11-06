@@ -17,24 +17,14 @@
           type="button"
           class="nav-button"
           data-view="overview"
-          aria-pressed="true"
+          aria-current="page"
         >
           Karten verwalten
         </button>
-        <button
-          type="button"
-          class="nav-button"
-          data-view="session"
-          aria-pressed="false"
-        >
+        <button type="button" class="nav-button" data-view="session">
           Lernen
         </button>
-        <button
-          type="button"
-          class="nav-button"
-          data-view="stats"
-          aria-pressed="false"
-        >
+        <button type="button" class="nav-button" data-view="stats">
           Statistik
         </button>
       </nav>
@@ -47,25 +37,42 @@
         aria-labelledby="overview-heading"
       >
         <h2 id="overview-heading">Karten verwalten</h2>
-        <form id="card-form" class="card-form">
+        <form id="card-form" class="card-form" novalidate>
           <div class="form-field">
             <label for="card-category">Kategorie</label>
             <input
               type="text"
               id="card-category"
               name="category"
+              maxlength="40"
+              autocomplete="off"
               placeholder="z. B. Wirtschaftsinformatik"
             />
           </div>
           <div class="form-field">
-            <label for="card-question">Frage</label>
-            <input type="text" id="card-question" name="question" />
+            <label for="card-question">Frage (Pflichtfeld)</label>
+            <input
+              type="text"
+              id="card-question"
+              name="question"
+              maxlength="200"
+              autocomplete="off"
+              required
+              aria-describedby="form-error"
+            />
           </div>
           <div class="form-field">
-            <label for="card-answer">Antwort</label>
-            <input type="text" id="card-answer" name="answer" />
+            <label for="card-answer">Antwort (Pflichtfeld)</label>
+            <textarea
+              id="card-answer"
+              name="answer"
+              rows="3"
+              maxlength="500"
+              required
+              aria-describedby="form-error"
+            ></textarea>
           </div>
-          <p id="form-error" class="form-error" hidden></p>
+          <p id="form-error" class="form-error" role="alert" hidden></p>
           <button type="submit" class="button button-primary">
             Karte hinzufügen
           </button>
@@ -99,6 +106,9 @@
         </div>
         <div id="session-card-container" class="session-card-container" hidden>
           <p id="session-progress" class="session-progress"></p>
+          <p class="session-hint">
+            Klicke auf die Karte, um die Antwort zu sehen.
+          </p>
           <button
             type="button"
             id="flip-trigger"
@@ -109,7 +119,9 @@
               <span class="card-front"
                 ><span id="session-question"></span
               ></span>
-              <span class="card-back"><span id="session-answer"></span></span>
+              <span class="card-back" aria-hidden="true"
+                ><span id="session-answer"></span
+              ></span>
             </span>
           </button>
           <div class="rating-buttons">
@@ -137,7 +149,7 @@
           <label for="category-filter">Kategorie filtern</label>
           <select id="category-filter"></select>
         </div>
-        <div id="stats-dashboard" class="stats-grid"></div>
+        <div id="stats-dashboard" class="stats-grid" aria-live="polite"></div>
       </section>
     </main>
 

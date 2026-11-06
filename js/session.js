@@ -1,15 +1,48 @@
-// Gruppe:  WI_A_Gruppe_5
+// Gruppe: WI_A_Gruppe_5
 
 let currentSessionCards = [];
 let currentCardIndex = 0;
 let sessionStarted = false;
+
+const SESSION_PANELS = {
+  noCards: "session-no-cards",
+  empty: "session-empty",
+  card: "session-card-container",
+};
+
+function persistSession(state) {
+  state.session = {
+    started: sessionStarted,
+    cardIds: currentSessionCards.map(function (card) {
+      return card.id;
+    }),
+    index: currentCardIndex,
+  };
+  saveState(state);
+}
+
+function restoreSession(state) {
+  const saved = state.session;
+  if (!saved || saved.started !== true || !Array.isArray(saved.cardIds)) {
+    return;
+  }
+  const findCard = function (id) {
+    return state.cards.find(function (card) {
+      return card.id === id;
+    });
+  };
+  const savedIndex = Number.isInteger(saved.index) ? saved.index : 0;
+  currentSessionCards = saved.cardIds.map(findCard).filter(Boolean);
+  currentCardIndex = saved.cardIds.slice(0, savedIndex).filter(findCard).length;
+  sessionStarted = true;
+}
 
 function startSession(state) {
   state.sessionCount += 1;
   currentSessionCards = getDueCards(state.cards, state.sessionCount);
   currentCardIndex = 0;
   sessionStarted = true;
-  saveState(state);
+  persistSession(state);
   renderSessionView(state);
 }
 
@@ -42,11 +75,24 @@ function setRatingButtonsEnabled(enabled) {
   document.getElementById("rate-wrong").disabled = !enabled;
 }
 
+function setCardFlipped(isFlipped) {
+  document
+    .getElementById("flip-trigger")
+    .setAttribute("aria-pressed", String(isFlipped));
+  document
+    .querySelector(".card-front")
+    .setAttribute("aria-hidden", String(isFlipped));
+  document
+    .querySelector(".card-back")
+    .setAttribute("aria-hidden", String(!isFlipped));
+  setRatingButtonsEnabled(isFlipped);
+}
+
 function flipCurrentCard() {
-  const trigger = document.getElementById("flip-trigger");
-  const isFlipped = trigger.getAttribute("aria-pressed") === "true";
-  trigger.setAttribute("aria-pressed", String(!isFlipped));
-  setRatingButtonsEnabled(!isFlipped);
+  const isFlipped =
+    document.getElementById("flip-trigger").getAttribute("aria-pressed") ===
+    "true";
+  setCardFlipped(!isFlipped);
 }
 
 function rateCurrentCard(state, wasCorrect) {
@@ -56,15 +102,13 @@ function rateCurrentCard(state, wasCorrect) {
   }
   if (wasCorrect) {
     promoteCard(card, state.sessionCount);
+    state.stats.correctReviews += 1;
   } else {
     resetCard(card, state.sessionCount);
   }
   state.stats.totalReviews += 1;
-  if (wasCorrect) {
-    state.stats.correctReviews += 1;
-  }
   currentCardIndex += 1;
-  saveState(state);
+  persistSession(state);
   renderSessionView(state);
 }
 
@@ -78,39 +122,33 @@ function getEmptyMessage() {
   return "Session abgeschlossen. Starte eine neue Session, wenn du weiterlernen möchtest.";
 }
 
-function renderSessionView(state) {
-  const noCards = document.getElementById("session-no-cards");
-  const emptyBox = document.getElementById("session-empty");
-  const container = document.getElementById("session-card-container");
+function showSessionPanel(activePanel) {
+  Object.keys(SESSION_PANELS).forEach(function (panel) {
+    document.getElementById(SESSION_PANELS[panel]).hidden =
+      panel !== activePanel;
+  });
+}
 
+function renderSessionView(state) {
   pruneSessionCards(state);
 
   if (state.cards.length === 0) {
-    noCards.hidden = false;
-    emptyBox.hidden = true;
-    container.hidden = true;
+    showSessionPanel("noCards");
     return;
   }
 
   const card = getCurrentSessionCard();
   if (!card) {
-    noCards.hidden = true;
-    emptyBox.hidden = false;
-    container.hidden = true;
     document.getElementById("session-empty-text").textContent =
       getEmptyMessage();
+    showSessionPanel("empty");
     return;
   }
 
-  noCards.hidden = true;
-  emptyBox.hidden = true;
-  container.hidden = false;
-
+  showSessionPanel("card");
   document.getElementById("session-question").textContent = card.question;
   document.getElementById("session-answer").textContent = card.answer;
   document.getElementById("session-progress").textContent =
     "Karte " + (currentCardIndex + 1) + " von " + currentSessionCards.length;
-
-  document.getElementById("flip-trigger").setAttribute("aria-pressed", "false");
-  setRatingButtonsEnabled(false);
+  setCardFlipped(false);
 }
