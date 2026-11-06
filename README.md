@@ -21,9 +21,11 @@ und anschließend `http://localhost:8000` im Browser öffnen.
 - Lernsession mit fälligen Karten und explizitem Button zum Sessionstart
 - Umdrehen per Klick/Tastatur; Bewertung erst nach dem Umdrehen möglich
 - Leitner-Box-Logik (Intervalle in Sessions: 0, 1, 3, 6, 10)
-- Statistik-Dashboard: Karten pro Box (Box 1 bis Box 5), Erfolgsquote
+- Statistik-Dashboard: Karten pro Box (Box 1, 2, 3 sowie Box 4–5 zusammengefasst), Erfolgsquote
 - Kategorie-Filter in der Statistik
-- Persistenz über localStorage inkl. Fehlerbehandlung
+- Persistenz über localStorage inkl. Fehlerbehandlung; eine laufende Session wird nach dem Neuladen fortgesetzt
+- Validierung: Pflichtfelder, Längenlimits, keine doppelten Fragen, Kategorien ohne Groß-/Kleinschreibungs-Duplikate
+- Barrierearme Bedienung (Labels, Fehlermeldung als Alert, Tastatur, ausreichende Kontraste in Hell- und Dunkelmodus)
 - Responsives Layout (getestet ab ca. 375 px und ab 1024 px)
 
 ## Hinweise zur Logik
@@ -36,12 +38,11 @@ und anschließend `http://localhost:8000` im Browser öffnen.
 - Die Erfolgsquote gilt für alle Bewertungen und ist vom
   Kategorie-Filter unabhängig.
 - Die Kategorie ist ein optionales Feld.
+- Ein Start ohne fällige Karten erhöht den Session-Zähler trotzdem. Das ist
+  beabsichtigt, da Karten höherer Boxen sonst nie wieder fällig würden.
 
 ## Bekannte Einschränkungen
 
-- Eine laufende Session geht beim Neuladen der Seite verloren; der
-  Session-Zähler und die Karten bleiben gespeichert.
-  Karteikarten-Lernsystem – Bau-Reihenfolge (korrigiert) – Seite 22
 - Karten können nicht bearbeitet, nur gelöscht werden.
 - Die Daten liegen nur im Browser (localStorage) des jeweiligen Geräts.
 
