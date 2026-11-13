@@ -1,4 +1,4 @@
-// Gruppenname: WI_A_Gruppe_5
+// Gruppe: WI_A_Gruppe_5
 
 let appState = createDefaultState();
 
