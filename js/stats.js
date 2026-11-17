@@ -36,7 +36,9 @@ function filterCardsByCategory(cards, category) {
 
 function renderCategoryFilter(state) {
   const select = document.getElementById("category-filter");
-  if (!select) return;
+  if (!select) {
+    return;
+  }
 
   const categories = getCategories(state.cards);
   const previousValue = select.value || "all";
@@ -83,7 +85,9 @@ function renderStatsDashboard(state) {
   const successRate = calculateSuccessRate(state.stats);
 
   const dashboard = document.getElementById("stats-dashboard");
-  if (!dashboard) return;
+  if (!dashboard) {
+    return;
+  }
 
   dashboard.innerHTML = "";
 
