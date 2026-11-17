@@ -12,8 +12,12 @@ Statt mit echten Kalenderdaten zu rechnen, zählt die Anwendung Lernsessions.
 ## Startanleitung
 
 `index.html` direkt im Browser öffnen. Alternativ lokaler Server:
+
+```
 python -m http.server
-und anschließend `http://localhost:8000` im Browser öffnen.
+```
+
+Anschließend `http://localhost:8000` im Browser öffnen.
 
 ## Umgesetzte Funktionen
 
